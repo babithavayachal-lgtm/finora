@@ -50,7 +50,7 @@ export function LandingPage() {
           {/* Hero Section - Two Column Layout */}
           <div className="grid lg:grid-cols-2 gap-12 items-center py-12">
             {/* Left Column - Content */}
-            <div className="space-y-6">
+            <div className="space-y-6 text-center lg:text-left">
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-600/10 to-cyan-600/10 border-2 border-blue-600/20">
                 <span className="text-blue-700 text-sm font-semibold">✨ Budgeting made clear with Finora</span>
               </div>
@@ -61,11 +61,11 @@ export function LandingPage() {
                 <br />
                 <span className="text-gray-900">of Your Finances</span>
               </h1>
-              <p className="text-lg lg:text-xl text-gray-700 leading-relaxed max-w-xl">
+              <p className="text-lg lg:text-xl text-gray-700 leading-relaxed max-w-xl mx-auto lg:mx-0">
                 Track expenses, set budgets, get alerts, and stay on target—all in one
                 streamlined dashboard. Start free and feel in control from day one.
               </p>
-              <div className="flex flex-wrap gap-4 pt-4">
+              <div className="flex flex-wrap gap-4 pt-4 justify-center lg:justify-start">
                 <Link
                   to="/signup"
                   className="group relative bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:from-blue-700 hover:to-cyan-700 px-8 py-4 rounded-xl text-base font-semibold transition-all shadow-lg hover:shadow-2xl hover:scale-105"
