@@ -8,6 +8,7 @@ export interface Database {
           full_name: string;
           avatar_url: string | null;
           onboarding_completed: boolean;
+          currency: string;
           created_at: string;
           updated_at: string;
         };
@@ -17,6 +18,7 @@ export interface Database {
           full_name?: string;
           avatar_url?: string | null;
           onboarding_completed?: boolean;
+          currency?: string;
           created_at?: string;
           updated_at?: string;
         };
@@ -26,6 +28,7 @@ export interface Database {
           full_name?: string;
           avatar_url?: string | null;
           onboarding_completed?: boolean;
+          currency?: string;
           created_at?: string;
           updated_at?: string;
         };
@@ -178,6 +181,38 @@ export interface Database {
           created_at?: string;
         };
       };
+      alert_settings: {
+        Row: {
+          id: string;
+          user_id: string;
+          alert_type: 'category_threshold' | 'total_budget_threshold' | 'monthly_completion';
+          category_id: string | null;
+          threshold_percentage: number;
+          is_enabled: boolean;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          alert_type: 'category_threshold' | 'total_budget_threshold' | 'monthly_completion';
+          category_id?: string | null;
+          threshold_percentage: number;
+          is_enabled?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          alert_type?: 'category_threshold' | 'total_budget_threshold' | 'monthly_completion';
+          category_id?: string | null;
+          threshold_percentage?: number;
+          is_enabled?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+      };
     };
   };
 }
@@ -197,3 +232,23 @@ export type BudgetWithCategory = Budget & {
   category: Category;
   spent: number;
 };
+
+export interface AlertSetting {
+  id: string;
+  user_id: string;
+  alert_type: 'category_threshold' | 'total_budget_threshold' | 'monthly_completion';
+  category_id: string | null;
+  threshold_percentage: number;
+  is_enabled: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface GeneratedAlert {
+  id: string;
+  type: 'success' | 'error' | 'warning' | 'info';
+  title: string;
+  message: string;
+  timestamp: Date;
+  alert_setting_id?: string;
+}

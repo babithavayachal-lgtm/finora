@@ -1,3 +1,184 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Animated gradient text for tagline */
+.gradient-text {
+	font-family: "Archivo Black", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	background: linear-gradient(90deg, #3b82f6, #7c3aed, #06b6d4, #10b981, #3b82f6);
+	background-size: 300% 300%;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	animation: gradientShift 6s ease infinite;
+	letter-spacing: -0.02em;
+}
+
+@keyframes gradientShift {
+	0% { background-position: 0% 50%; }
+	50% { background-position: 100% 50%; }
+	100% { background-position: 0% 50%; }
+}
+
+/* Typewriter effect from left to right with cursor */
+.typewriter-container {
+	display: inline-block;
+	position: relative;
+}
+
+.typewriter-text {
+	display: inline-block;
+	overflow: hidden;
+	white-space: nowrap;
+	animation: typewriterLTR 3.5s steps(46, end) forwards;
+	width: 0;
+	max-width: fit-content;
+	line-height: 1.2;
+	vertical-align: baseline;
+	text-align: left;
+}
+
+.typewriter-cursor {
+	position: absolute;
+	left: 0;
+	top: 0;
+	color: #3b82f6;
+	font-weight: 300;
+	margin-left: 0;
+	animation: blinkCursor 0.8s step-end infinite, moveCursor 3.5s steps(46, end) forwards, hideCursor 0.2s ease-out 3.5s forwards;
+	opacity: 1;
+	line-height: 1.2;
+	font-family: inherit;
+	pointer-events: none;
+	white-space: nowrap;
+}
+
+@keyframes typewriterLTR {
+	0% {
+		width: 0;
+	}
+	100% {
+		width: 100%;
+	}
+}
+
+@keyframes moveCursor {
+	0% {
+		left: 0;
+	}
+	100% {
+		left: 100%;
+		margin-left: 3px;
+	}
+}
+
+@keyframes blinkCursor {
+	0%, 50% {
+		opacity: 1;
+	}
+	51%, 100% {
+		opacity: 0;
+	}
+}
+
+@keyframes hideCursor {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		visibility: hidden;
+		width: 0;
+		margin-left: 0;
+	}
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.fade-in-up {
+	animation: fadeInUp 0.6s ease-out;
+}
+
+/* Sub tagline animation - fade in from bottom */
+.sub-tagline {
+	opacity: 0;
+	transform: translateY(20px);
+	animation: fadeInUpSub 0.8s ease-out 3.5s forwards;
+	margin-top: 0.25rem;
+	font-weight: 400;
+	letter-spacing: 0.02em;
+}
+
+@keyframes fadeInUpSub {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Custom Scrollbar Styles */
+/* Webkit browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+	border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #d1d5db; /* light gray */
+	border-radius: 8px;
+	border: 1px solid transparent;
+	background-clip: padding-box;
+	transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #c4c7ce;
+	background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:active {
+	background: #b5b8c0;
+	background-clip: padding-box;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-thumb {
+	background: #4b5563; /* gray-600 */
+	background-clip: padding-box;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+	background: #374151; /* gray-700 */
+	background-clip: padding-box;
+}
+
+/* Firefox */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: #d1d5db transparent;
+}
+
+.dark * {
+	scrollbar-color: #4b5563 transparent;
+}

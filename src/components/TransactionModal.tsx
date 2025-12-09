@@ -3,7 +3,9 @@ import { X } from 'lucide-react';
 import { Category, Transaction } from '../lib/types';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
+import { useCurrency } from '../contexts/CurrencyContext';
 import { trackEvent } from '../lib/analytics';
+import { getCurrencySymbol } from '../lib/currency';
 
 interface TransactionModalProps {
   isOpen: boolean;
@@ -21,6 +23,7 @@ export function TransactionModal({
   categories,
 }: TransactionModalProps) {
   const { user } = useAuth();
+  const { currency } = useCurrency();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [merchants, setMerchants] = useState<string[]>([]);
@@ -28,7 +31,7 @@ export function TransactionModal({
 
   const [formData, setFormData] = useState({
     amount: '',
-    currency: 'USD',
+    currency: currency,
     date: new Date().toISOString().split('T')[0],
     merchant: '',
     category_id: '',
@@ -50,7 +53,7 @@ export function TransactionModal({
     } else {
       setFormData({
         amount: '',
-        currency: 'USD',
+        currency: currency,
         date: new Date().toISOString().split('T')[0],
         merchant: '',
         category_id: categories[0]?.id || '',
@@ -58,7 +61,7 @@ export function TransactionModal({
         note: '',
       });
     }
-  }, [transaction, categories, isOpen]);
+  }, [transaction, categories, isOpen, currency]);
 
   useEffect(() => {
     if (isOpen) {
@@ -225,7 +228,7 @@ export function TransactionModal({
               </label>
               <div className="relative">
                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
-                  $
+                  {getCurrencySymbol(currency)}
                 </span>
                 <input
                   type="number"

@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Plus, Search, Filter, X } from 'lucide-react';
+import { Plus, Search, Filter, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { DashboardLayout } from '../components/DashboardLayout';
 import { RecentTransactions } from '../components/RecentTransactions';
 import { TransactionModal } from '../components/TransactionModal';
 import { Toast } from '../components/Toast';
 import { useAuth } from '../contexts/AuthContext';
+import { useTheme } from '../contexts/ThemeContext';
 import { supabase } from '../lib/supabase';
 import { Category, TransactionWithCategory } from '../lib/types';
 
@@ -15,6 +16,7 @@ interface ToastState {
 
 export function TransactionsPage() {
   const { user } = useAuth();
+  const { isDarkMode } = useTheme();
   const [loading, setLoading] = useState(true);
   const [transactions, setTransactions] = useState<TransactionWithCategory[]>([]);
   const [filteredTransactions, setFilteredTransactions] = useState<TransactionWithCategory[]>([]);
@@ -24,6 +26,10 @@ export function TransactionsPage() {
   const [toast, setToast] = useState<ToastState | null>(null);
   const [deletingTransaction, setDeletingTransaction] = useState<TransactionWithCategory | null>(null);
   const [showFilters, setShowFilters] = useState(false);
+  
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const [transactionsPerPage] = useState(20);
 
   const [filters, setFilters] = useState({
     search: '',
@@ -34,13 +40,14 @@ export function TransactionsPage() {
   });
 
   useEffect(() => {
-    if (user) {
+    if (user && loading) {
       fetchData();
     }
   }, [user]);
 
   useEffect(() => {
     applyFilters();
+    setCurrentPage(1); // Reset to first page when filters change
   }, [transactions, filters]);
 
   const fetchData = async () => {
@@ -101,6 +108,19 @@ export function TransactionsPage() {
     }
 
     setFilteredTransactions(filtered);
+  };
+
+  // Pagination calculations
+  const totalPages = Math.ceil(filteredTransactions.length / transactionsPerPage);
+  const startIndex = (currentPage - 1) * transactionsPerPage;
+  const endIndex = startIndex + transactionsPerPage;
+  const paginatedTransactions = filteredTransactions.slice(startIndex, endIndex);
+
+  const goToPage = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const clearFilters = () => {
@@ -172,8 +192,9 @@ export function TransactionsPage() {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">Transactions</h1>
-            <p className="text-gray-600 mt-1">
-              Showing {filteredTransactions.length} of {transactions.length} transactions
+            <p className={`mt-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+              Showing {startIndex + 1}-{Math.min(endIndex, filteredTransactions.length)} of {filteredTransactions.length} transactions
+              {filteredTransactions.length !== transactions.length && ` (${transactions.length} total)`}
             </p>
           </div>
           <button
@@ -291,12 +312,82 @@ export function TransactionsPage() {
         </div>
 
         <RecentTransactions
-          transactions={filteredTransactions.filter(
+          transactions={paginatedTransactions.filter(
             (t) => !deletingTransaction || t.id !== deletingTransaction.id
           )}
           onEdit={handleEditTransaction}
           onDelete={handleDeleteTransaction}
         />
+
+        {/* Pagination Controls */}
+        {totalPages > 1 && (
+          <div className={`flex items-center justify-between px-4 py-3 rounded-lg ${isDarkMode ? 'bg-gray-800 border border-gray-700' : 'bg-white border border-gray-200'} shadow-sm`}>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => goToPage(currentPage - 1)}
+                disabled={currentPage === 1}
+                className={`p-2 rounded-lg transition-colors ${
+                  currentPage === 1
+                    ? 'opacity-50 cursor-not-allowed'
+                    : isDarkMode
+                      ? 'text-gray-400 hover:text-gray-200 hover:bg-gray-700'
+                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                }`}
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              
+              <div className="flex items-center gap-1">
+                {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                  let pageNum: number;
+                  if (totalPages <= 5) {
+                    pageNum = i + 1;
+                  } else if (currentPage <= 3) {
+                    pageNum = i + 1;
+                  } else if (currentPage >= totalPages - 2) {
+                    pageNum = totalPages - 4 + i;
+                  } else {
+                    pageNum = currentPage - 2 + i;
+                  }
+                  
+                  return (
+                    <button
+                      key={pageNum}
+                      onClick={() => goToPage(pageNum)}
+                      className={`min-w-[2.5rem] px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                        currentPage === pageNum
+                          ? 'bg-blue-600 text-white'
+                          : isDarkMode
+                            ? 'text-gray-400 hover:text-gray-200 hover:bg-gray-700'
+                            : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                      }`}
+                    >
+                      {pageNum}
+                    </button>
+                  );
+                })}
+              </div>
+
+              <button
+                onClick={() => goToPage(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className={`p-2 rounded-lg transition-colors ${
+                  currentPage === totalPages
+                    ? 'opacity-50 cursor-not-allowed'
+                    : isDarkMode
+                      ? 'text-gray-400 hover:text-gray-200 hover:bg-gray-700'
+                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                }`}
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+            </div>
+            
+            <div className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+              Page {currentPage} of {totalPages}
+            </div>
+          </div>
+        )}
       </div>
 
       <TransactionModal

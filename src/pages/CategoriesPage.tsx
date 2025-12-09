@@ -200,7 +200,7 @@ export function CategoriesPage() {
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
 
   useEffect(() => {
-    if (user) {
+    if (user && loading) {
       fetchCategories();
     }
   }, [user]);

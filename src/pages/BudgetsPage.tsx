@@ -3,9 +3,11 @@ import { Plus, Pencil, Trash2, X, TrendingUp, TrendingDown } from 'lucide-react'
 import { DashboardLayout } from '../components/DashboardLayout';
 import { Toast } from '../components/Toast';
 import { useAuth } from '../contexts/AuthContext';
+import { useCurrency } from '../contexts/CurrencyContext';
 import { supabase } from '../lib/supabase';
 import { Category, BudgetWithCategory } from '../lib/types';
 import { trackEvent } from '../lib/analytics';
+import { formatCurrency, getCurrencySymbol } from '../lib/currency';
 
 interface BudgetModalProps {
   isOpen: boolean;
@@ -17,6 +19,7 @@ interface BudgetModalProps {
 
 function BudgetModal({ isOpen, onClose, onSuccess, budget, categories }: BudgetModalProps) {
   const { user } = useAuth();
+  const { currency, loading: currencyLoading } = useCurrency();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [formData, setFormData] = useState({
@@ -156,7 +159,7 @@ function BudgetModal({ isOpen, onClose, onSuccess, budget, categories }: BudgetM
               </label>
               <div className="relative">
                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
-                  $
+                  {currencyLoading ? getCurrencySymbol('INR') : getCurrencySymbol(currency || 'INR')}
                 </span>
                 <input
                   type="number"
@@ -194,6 +197,7 @@ function BudgetModal({ isOpen, onClose, onSuccess, budget, categories }: BudgetM
 }
 
 export function BudgetsPage() {
+  const { currency } = useCurrency();
   const { user } = useAuth();
   const [loading, setLoading] = useState(true);
   const [budgets, setBudgets] = useState<BudgetWithCategory[]>([]);
@@ -203,7 +207,7 @@ export function BudgetsPage() {
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
 
   useEffect(() => {
-    if (user) {
+    if (user && loading) {
       fetchData();
     }
   }, [user]);
@@ -344,9 +348,9 @@ export function BudgetsPage() {
                     </div>
                     <div className="flex items-baseline gap-2">
                       <span className="text-2xl font-bold text-gray-900">
-                        ${budget.spent.toFixed(2)}
+                        {formatCurrency(budget.spent, currency)}
                       </span>
-                      <span className="text-gray-500">/ ${budget.amount.toFixed(2)}</span>
+                      <span className="text-gray-500">/ {formatCurrency(budget.amount, currency)}</span>
                     </div>
                   </div>
                   <div className="flex gap-2">
@@ -386,14 +390,14 @@ export function BudgetsPage() {
                       <>
                         <TrendingDown className="h-4 w-4 text-red-500" />
                         <span className="text-red-600 font-medium">
-                          Over budget by ${(budget.spent - budget.amount).toFixed(2)}
+                          Over budget by {formatCurrency(budget.spent - budget.amount, currency)}
                         </span>
                       </>
                     ) : (
                       <>
                         <TrendingUp className="h-4 w-4 text-green-500" />
                         <span className="text-green-600 font-medium">
-                          ${(budget.amount - budget.spent).toFixed(2)} remaining
+                          {formatCurrency(budget.amount - budget.spent, currency)} remaining
                         </span>
                       </>
                     )}

@@ -1,5 +1,7 @@
 import { CreditCard, Smartphone, Banknote, Pencil, Trash2 } from 'lucide-react';
 import { TransactionWithCategory } from '../lib/types';
+import { useCurrency } from '../contexts/CurrencyContext';
+import { formatCurrency } from '../lib/currency';
 
 interface RecentTransactionsProps {
   transactions: TransactionWithCategory[];
@@ -12,6 +14,8 @@ export function RecentTransactions({
   onEdit,
   onDelete,
 }: RecentTransactionsProps) {
+  const { currency } = useCurrency();
+  
   const getPaymentIcon = (type: string) => {
     switch (type) {
       case 'Card':
@@ -62,11 +66,21 @@ export function RecentTransactions({
                     <span className="text-xs text-gray-500">
                       {new Date(transaction.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                     </span>
+                    <span className="text-xs text-gray-400">•</span>
+                    <span
+                      className="text-xs font-medium px-2 py-0.5 rounded-full"
+                      style={{
+                        backgroundColor: `${transaction.category.color}20`,
+                        color: transaction.category.color,
+                      }}
+                    >
+                      {transaction.category.name}
+                    </span>
                   </div>
                 </div>
                 <div className="text-right">
                   <p className="text-sm font-bold text-gray-900">
-                    -${transaction.amount.toFixed(2)}
+                    -{formatCurrency(transaction.amount, currency)}
                   </p>
                   <span
                     className="inline-block mt-1 px-2 py-0.5 rounded-full text-xs font-medium"
