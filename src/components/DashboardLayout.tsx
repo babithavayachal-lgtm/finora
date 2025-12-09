@@ -38,7 +38,13 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
         <aside className="hidden md:flex md:flex-shrink-0">
           <div className={`flex flex-col w-20 ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border-r overflow-x-hidden`}>
             <div className={`flex items-center justify-center h-16 border-b ${isDarkMode ? 'border-gray-700' : 'border-gray-200'}`}>
-              {/* Logo removed - now in header */}
+              <Link
+                to="/dashboard"
+                className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-blue-500"
+                aria-label="Finora Home"
+              >
+                <Wallet className="h-6 w-6 text-white" />
+              </Link>
             </div>
             <nav className="flex-1 px-3 py-6 space-y-2 overflow-y-auto overflow-x-hidden">
               {navigation.map((item) => {
@@ -114,12 +120,9 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
         </aside>
 
         <div className="flex flex-col flex-1 overflow-hidden">
-          <header className={`border-b flex items-center justify-between h-16 overflow-x-hidden ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
-            {/* Logo and Brand Name - Leftmost position */}
-            <div className="flex items-center gap-2 flex-shrink-0 pl-2">
-              <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
-                <Wallet className="h-6 w-6 text-white" />
-              </div>
+          <header className={`border-b flex items-center justify-between h-16 overflow-visible ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
+            {/* Brand Name Only (sidebar holds the logo) */}
+            <div className="flex items-center flex-shrink-0 pl-2">
               <span className={`text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent ${isDarkMode ? '' : ''}`}>
                 Finora
               </span>

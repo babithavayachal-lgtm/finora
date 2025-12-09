@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import { useCurrency } from '../contexts/CurrencyContext';
-import { formatCurrencyCompact } from '../lib/currency';
+import { formatCurrencyCompact, getCurrencySymbol } from '../lib/currency';
 
 interface MonthlyData {
   month: string;
@@ -136,7 +136,7 @@ export function MonthlyOverviewChart({ data, title = 'Spending Overview', onInte
                 textAnchor="end"
                 className={`text-xs font-medium ${isDarkMode ? 'fill-gray-400' : 'fill-gray-600'}`}
               >
-                ${Math.round(value)}
+                {`${getCurrencySymbol(currency)}${Math.round(value)}`}
               </text>
             );
           })}
