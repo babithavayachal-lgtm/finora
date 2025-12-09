@@ -37,26 +37,25 @@ export function LandingPage() {
       </nav>
 
       <main className="relative min-h-[calc(100vh-4rem)]">
-        {/* Background image with overlay */}
-        <div className="absolute inset-0 -z-10 overflow-hidden">
+        {/* Background image */}
+        <div className="absolute inset-0 overflow-hidden">
           <img
             src="/assets/background-image.jpg"
             alt="Background"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-black/20"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative">
           {/* Hero Section - Centered */}
           <div className="text-center max-w-4xl mx-auto space-y-6 py-12">
             <p className="inline-flex items-center px-3 py-1 rounded-full bg-blue-600/10 text-blue-700 text-sm font-semibold">
               Budgeting made clear with Finora
             </p>
-            <h1 className="text-4xl lg:text-6xl font-bold text-white leading-tight drop-shadow-lg">
+            <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight">
               Take Control of Your Finances
             </h1>
-            <p className="text-lg lg:text-xl text-white/90 max-w-2xl mx-auto drop-shadow-md">
+            <p className="text-lg lg:text-xl text-gray-700 max-w-2xl mx-auto">
               Track expenses, set budgets, get alerts, and stay on target—all in one
               streamlined dashboard. Start free and feel in control from day one.
             </p>
@@ -74,12 +73,6 @@ export function LandingPage() {
                 Log in
               </Link>
             </div>
-          </div>
-
-          {/* Gradient ornaments - constrained to viewport */}
-          <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
-            <div className="absolute top-0 left-0 w-60 h-60 bg-blue-500/10 blur-3xl rounded-full -translate-x-1/4 -translate-y-1/4" />
-            <div className="absolute bottom-0 right-0 w-72 h-72 bg-purple-500/10 blur-3xl rounded-full translate-x-1/4 translate-y-1/4" />
           </div>
 
           {/* Feature cards */}
