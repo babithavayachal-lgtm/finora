@@ -39,11 +39,14 @@ export function LandingPage() {
       </nav>
 
       <main className="relative min-h-[calc(100vh-4rem)] overflow-hidden">
-        {/* Decorative background elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 right-10 w-72 h-72 bg-gradient-to-br from-blue-400/30 to-cyan-400/30 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 left-10 w-96 h-96 bg-gradient-to-br from-orange-400/30 to-pink-400/30 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-green-400/20 to-teal-400/20 rounded-full blur-3xl"></div>
+        {/* Background image */}
+        <div className="absolute inset-0 overflow-hidden">
+          <img
+            src="/assets/retroinspired-business-analytics-financial-technical-finance-banner-background-presentations-websites-elevate-your-371718472.webp"
+            alt="Financial Analytics Background"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-white/95 via-white/90 to-blue-50/95"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative">
