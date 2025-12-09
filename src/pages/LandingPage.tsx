@@ -1,5 +1,5 @@
 import { Link, Navigate } from 'react-router-dom';
-import { Wallet, TrendingUp, PieChart, Shield, Play } from 'lucide-react';
+import { Wallet, TrendingUp, PieChart, Shield } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
 export function LandingPage() {
@@ -39,59 +39,40 @@ export function LandingPage() {
       <main className="relative min-h-[calc(100vh-4rem)]">
         {/* Background image with overlay */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute inset-0 bg-black/20"></div>
-          <img 
-            src="/assets/background-image.jpg" 
+          <img
+            src="/assets/background-image.jpg"
             alt="Background"
             className="w-full h-full object-cover"
           />
+          <div className="absolute inset-0 bg-black/20"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left: Video */}
-            <div className="w-full">
-              <video
-                className="w-full h-auto rounded-lg shadow-xl"
-                autoPlay
-                playsInline
-                muted
-                loop
-                preload="auto"
-                src="/assets/welcome-avatar.mp4"
-              />
-            </div>
-
-            {/* Right: Text + CTA */}
-            <div className="space-y-6">
-              <p className="inline-flex items-center px-3 py-1 rounded-full bg-blue-600/10 text-blue-700 text-sm font-semibold">
-                Budgeting made clear with Finora
-              </p>
-              <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                See your finances come to life before you even sign up.
-              </h1>
-              <p className="text-lg text-gray-600 max-w-xl">
-                Track expenses, set budgets, get alerts, and stay on target—all in one
-                streamlined dashboard. Start free and feel in control from day one.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <Link
-                  to="/signup"
-                  className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 rounded-lg text-base font-semibold transition-colors"
-                >
-                  Start Tracking for Free
-                </Link>
-                  <Link
-                    to="/login"
-                    className="bg-white text-gray-800 hover:bg-gray-50 px-6 py-3 rounded-lg text-base font-semibold border border-gray-200 shadow-sm transition-colors"
-                  >
-                    Log in
-                  </Link>
-                </div>
-                <div className="text-sm text-gray-500">
-                  The welcome video plays on load (audio on) and stops when finished. Refreshing will replay it.
-                </div>
-              </div>
+          {/* Hero Section - Centered */}
+          <div className="text-center max-w-4xl mx-auto space-y-6 py-12">
+            <p className="inline-flex items-center px-3 py-1 rounded-full bg-blue-600/10 text-blue-700 text-sm font-semibold">
+              Budgeting made clear with Finora
+            </p>
+            <h1 className="text-4xl lg:text-6xl font-bold text-white leading-tight drop-shadow-lg">
+              Take Control of Your Finances
+            </h1>
+            <p className="text-lg lg:text-xl text-white/90 max-w-2xl mx-auto drop-shadow-md">
+              Track expenses, set budgets, get alerts, and stay on target—all in one
+              streamlined dashboard. Start free and feel in control from day one.
+            </p>
+            <div className="flex flex-wrap gap-3 justify-center pt-4">
+              <Link
+                to="/signup"
+                className="bg-blue-600 text-white hover:bg-blue-700 px-8 py-4 rounded-lg text-base font-semibold transition-colors shadow-lg"
+              >
+                Start Tracking for Free
+              </Link>
+              <Link
+                to="/login"
+                className="bg-white text-gray-800 hover:bg-gray-50 px-8 py-4 rounded-lg text-base font-semibold border border-gray-200 shadow-lg transition-colors"
+              >
+                Log in
+              </Link>
             </div>
           </div>
 
@@ -159,6 +140,7 @@ export function LandingPage() {
               Get a clear view of your finances with our intuitive dashboard. Track expenses, monitor budgets, and gain insights into your spending habits.
             </p>
           </div>
+        </div>
       </main>
 
       <footer className="bg-white border-t border-gray-200 mt-24">
