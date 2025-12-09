@@ -10,7 +10,7 @@ export function LandingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
+    <div className="min-h-screen bg-white">
       <nav className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -36,57 +36,51 @@ export function LandingPage() {
         </div>
       </nav>
 
-      <main>
-        {/* Hero with gradient + dashboard snapshot + avatar video */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="hero-snapshot relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-700/10 via-white to-purple-100 border border-white/60 shadow-2xl">
-            {/* Faded dashboard background */}
-            <div className="absolute inset-0">
-              <img
-                src="/assets/landing-dashboard.png"
-                alt="Finora dashboard preview"
-                className="w-full h-full object-cover opacity-15 blur-sm"
-                loading="lazy"
+      <main className="relative min-h-[calc(100vh-4rem)]">
+        {/* Background image with overlay */}
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <div className="absolute inset-0 bg-black/20"></div>
+          <img 
+            src="/assets/background-image.jpg" 
+            alt="Background"
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Video */}
+            <div className="w-full">
+              <video
+                className="w-full h-auto rounded-lg shadow-xl"
+                autoPlay
+                playsInline
+                muted
+                loop
+                preload="auto"
+                src="/assets/welcome-avatar.mp4"
               />
-              <div className="absolute inset-0 bg-white/70 backdrop-blur-[1px]" />
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-10 items-center p-8 lg:p-12 relative z-10">
-              {/* Left: Large autoplay video with audio */}
-              <div className="w-full">
-                <div className="relative overflow-hidden rounded-2xl shadow-2xl ring-1 ring-black/5 bg-black/10">
-                  <video
-                    className="w-full h-full object-cover"
-                    autoPlay
-                    playsInline
-                    controls={false}
-                    muted={false}
-                    loop={false}
-                    src="/assets/welcome-avatar.mp4"
-                  />
-                  <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/10 to-transparent" />
-                </div>
-              </div>
-
-              {/* Right: Text + CTA */}
-              <div className="space-y-6">
-                <p className="inline-flex items-center px-3 py-1 rounded-full bg-blue-600/10 text-blue-700 text-sm font-semibold">
-                  Budgeting made clear with Finora
-                </p>
-                <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                  See your finances come to life before you even sign up.
-                </h1>
-                <p className="text-lg text-gray-600 max-w-xl">
-                  Track expenses, set budgets, get alerts, and stay on target—all in one
-                  streamlined dashboard. Start free and feel in control from day one.
-                </p>
-                <div className="flex flex-wrap gap-3">
-                  <Link
-                    to="/signup"
-                    className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 rounded-lg text-base font-semibold shadow-lg transition-colors"
-                  >
-                    Start Tracking for Free
-                  </Link>
+            {/* Right: Text + CTA */}
+            <div className="space-y-6">
+              <p className="inline-flex items-center px-3 py-1 rounded-full bg-blue-600/10 text-blue-700 text-sm font-semibold">
+                Budgeting made clear with Finora
+              </p>
+              <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                See your finances come to life before you even sign up.
+              </h1>
+              <p className="text-lg text-gray-600 max-w-xl">
+                Track expenses, set budgets, get alerts, and stay on target—all in one
+                streamlined dashboard. Start free and feel in control from day one.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  to="/signup"
+                  className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 rounded-lg text-base font-semibold transition-colors"
+                >
+                  Start Tracking for Free
+                </Link>
                   <Link
                     to="/login"
                     className="bg-white text-gray-800 hover:bg-gray-50 px-6 py-3 rounded-lg text-base font-semibold border border-gray-200 shadow-sm transition-colors"
@@ -99,10 +93,12 @@ export function LandingPage() {
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* Gradient ornaments */}
-            <div className="absolute -top-10 -left-10 w-60 h-60 bg-blue-500/10 blur-3xl rounded-full" />
-            <div className="absolute -bottom-16 -right-12 w-72 h-72 bg-purple-500/10 blur-3xl rounded-full" />
+          {/* Gradient ornaments - constrained to viewport */}
+          <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+            <div className="absolute top-0 left-0 w-60 h-60 bg-blue-500/10 blur-3xl rounded-full -translate-x-1/4 -translate-y-1/4" />
+            <div className="absolute bottom-0 right-0 w-72 h-72 bg-purple-500/10 blur-3xl rounded-full translate-x-1/4 translate-y-1/4" />
           </div>
 
           {/* Feature cards */}
@@ -147,7 +143,22 @@ export function LandingPage() {
               </p>
             </div>
           </div>
-        </div>
+
+          {/* Dashboard Showcase */}
+          <div className="mt-24 text-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8">Experience the Finora Dashboard</h2>
+            <div className="max-w-6xl mx-auto bg-white rounded-xl shadow-2xl overflow-hidden">
+              <img
+                src="/assets/landing-dashboard.png"
+                alt="Finora Dashboard"
+                className="w-full h-auto"
+                loading="lazy"
+              />
+            </div>
+            <p className="mt-6 text-gray-600 max-w-3xl mx-auto">
+              Get a clear view of your finances with our intuitive dashboard. Track expenses, monitor budgets, and gain insights into your spending habits.
+            </p>
+          </div>
       </main>
 
       <footer className="bg-white border-t border-gray-200 mt-24">
