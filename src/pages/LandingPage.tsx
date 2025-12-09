@@ -10,24 +10,26 @@ export function LandingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
-      <nav className="bg-white shadow-sm">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50">
+      <nav className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-2">
-              <Wallet className="h-8 w-8 text-blue-600" />
-              <span className="text-xl font-bold text-gray-900">Finora</span>
+              <div className="bg-gradient-to-br from-blue-600 to-cyan-500 p-2 rounded-lg">
+                <Wallet className="h-6 w-6 text-white" />
+              </div>
+              <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Finora</span>
             </div>
             <div className="flex items-center space-x-4">
               <Link
                 to="/login"
-                className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
               >
                 Log in
               </Link>
               <Link
                 to="/signup"
-                className="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:from-blue-700 hover:to-cyan-700 px-4 py-2 rounded-lg text-sm font-medium transition-all shadow-md hover:shadow-lg"
               >
                 Get Started
               </Link>
@@ -36,39 +38,42 @@ export function LandingPage() {
         </div>
       </nav>
 
-      <main className="relative min-h-[calc(100vh-4rem)]">
-        {/* Background image */}
-        <div className="absolute inset-0 overflow-hidden">
-          <img
-            src="/assets/background-image.jpg"
-            alt="Background"
-            className="w-full h-full object-cover opacity-20"
-          />
+      <main className="relative min-h-[calc(100vh-4rem)] overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 right-10 w-72 h-72 bg-gradient-to-br from-blue-400/30 to-cyan-400/30 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 left-10 w-96 h-96 bg-gradient-to-br from-orange-400/30 to-pink-400/30 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-green-400/20 to-teal-400/20 rounded-full blur-3xl"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative">
           {/* Hero Section - Centered */}
           <div className="text-center max-w-4xl mx-auto space-y-6 py-12">
-            <p className="inline-flex items-center px-3 py-1 rounded-full bg-blue-600/10 text-blue-700 text-sm font-semibold">
-              Budgeting made clear with Finora
-            </p>
-            <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight">
-              Take Control of Your Finances
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-600/10 to-cyan-600/10 border-2 border-blue-600/20">
+              <span className="text-blue-700 text-sm font-semibold">✨ Budgeting made clear with Finora</span>
+            </div>
+            <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
+              <span className="bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-600 bg-clip-text text-transparent">
+                Take Control
+              </span>
+              <br />
+              <span className="text-gray-900">of Your Finances</span>
             </h1>
-            <p className="text-lg lg:text-xl text-gray-700 max-w-2xl mx-auto">
+            <p className="text-lg lg:text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
               Track expenses, set budgets, get alerts, and stay on target—all in one
               streamlined dashboard. Start free and feel in control from day one.
             </p>
-            <div className="flex flex-wrap gap-3 justify-center pt-4">
+            <div className="flex flex-wrap gap-4 justify-center pt-6">
               <Link
                 to="/signup"
-                className="bg-blue-600 text-white hover:bg-blue-700 px-8 py-4 rounded-lg text-base font-semibold transition-colors shadow-lg"
+                className="group relative bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:from-blue-700 hover:to-cyan-700 px-8 py-4 rounded-xl text-base font-semibold transition-all shadow-lg hover:shadow-2xl hover:scale-105"
               >
                 Start Tracking for Free
+                <span className="ml-2 group-hover:translate-x-1 inline-block transition-transform">→</span>
               </Link>
               <Link
                 to="/login"
-                className="bg-white text-gray-800 hover:bg-gray-50 px-8 py-4 rounded-lg text-base font-semibold border border-gray-200 shadow-lg transition-colors"
+                className="bg-white text-gray-800 hover:bg-gray-50 px-8 py-4 rounded-xl text-base font-semibold border-2 border-gray-200 shadow-lg hover:shadow-xl transition-all hover:scale-105"
               >
                 Log in
               </Link>
@@ -76,69 +81,84 @@ export function LandingPage() {
           </div>
 
           {/* Feature cards */}
-          <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
-              <div className="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                <Wallet className="h-6 w-6 text-blue-600" />
+          <div className="mt-20 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 border-t-4 border-blue-500">
+              <div className="bg-gradient-to-br from-blue-500 to-cyan-500 w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Wallet className="h-7 w-7 text-white" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Easy Tracking</h3>
-              <p className="text-gray-600">
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Easy Tracking</h3>
+              <p className="text-gray-600 leading-relaxed">
                 Quickly log your expenses with our intuitive interface. Add transactions in seconds.
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
-              <div className="bg-green-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                <TrendingUp className="h-6 w-6 text-green-600" />
+            <div className="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 border-t-4 border-green-500">
+              <div className="bg-gradient-to-br from-green-500 to-emerald-500 w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <TrendingUp className="h-7 w-7 text-white" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Smart Insights</h3>
-              <p className="text-gray-600">
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Smart Insights</h3>
+              <p className="text-gray-600 leading-relaxed">
                 Understand your spending patterns with visual charts and monthly summaries.
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
-              <div className="bg-purple-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                <PieChart className="h-6 w-6 text-purple-600" />
+            <div className="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 border-t-4 border-teal-500">
+              <div className="bg-gradient-to-br from-teal-500 to-cyan-500 w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <PieChart className="h-7 w-7 text-white" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Budget Management</h3>
-              <p className="text-gray-600">
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Budget Management</h3>
+              <p className="text-gray-600 leading-relaxed">
                 Set monthly budgets by category and get alerts when you're approaching limits.
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
-              <div className="bg-orange-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                <Shield className="h-6 w-6 text-orange-600" />
+            <div className="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 border-t-4 border-orange-500">
+              <div className="bg-gradient-to-br from-orange-500 to-pink-500 w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Shield className="h-7 w-7 text-white" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Secure & Private</h3>
-              <p className="text-gray-600">
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Secure & Private</h3>
+              <p className="text-gray-600 leading-relaxed">
                 Your financial data is encrypted and protected. Only you can access your information.
               </p>
             </div>
           </div>
 
           {/* Dashboard Showcase */}
-          <div className="mt-24 text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">Experience the Finora Dashboard</h2>
-            <div className="max-w-6xl mx-auto bg-white rounded-xl shadow-2xl overflow-hidden">
-              <img
-                src="/assets/landing-dashboard.png"
-                alt="Finora Dashboard"
-                className="w-full h-auto"
-                loading="lazy"
-              />
+          <div className="mt-32 text-center">
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-orange-500/10 to-pink-500/10 border-2 border-orange-500/20 mb-4">
+              <span className="text-orange-700 text-sm font-semibold">🚀 Powerful Dashboard</span>
             </div>
-            <p className="mt-6 text-gray-600 max-w-3xl mx-auto">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-4">
+              <span className="bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
+                Experience Finora
+              </span>
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-12">
               Get a clear view of your finances with our intuitive dashboard. Track expenses, monitor budgets, and gain insights into your spending habits.
             </p>
+            <div className="max-w-6xl mx-auto bg-gradient-to-br from-blue-100 via-white to-orange-100 p-3 rounded-2xl shadow-2xl">
+              <div className="bg-white rounded-xl shadow-xl overflow-hidden border-2 border-gray-100">
+                <img
+                  src="/assets/landing-dashboard.png"
+                  alt="Finora Dashboard"
+                  className="w-full h-auto"
+                  loading="lazy"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </main>
 
-      <footer className="bg-white border-t border-gray-200 mt-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <p className="text-center text-gray-500 text-sm">
+      <footer className="bg-gradient-to-r from-gray-900 to-gray-800 text-white mt-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="flex items-center justify-center space-x-3 mb-4">
+            <div className="bg-gradient-to-br from-blue-600 to-cyan-500 p-2 rounded-lg">
+              <Wallet className="h-5 w-5 text-white" />
+            </div>
+            <span className="text-xl font-bold">Finora</span>
+          </div>
+          <p className="text-center text-gray-400 text-sm">
             © 2024 Finora. Built with security and simplicity in mind.
           </p>
         </div>
