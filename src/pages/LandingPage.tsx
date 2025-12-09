@@ -50,36 +50,50 @@ export function LandingPage() {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative">
-          {/* Hero Section - Centered */}
-          <div className="text-center max-w-4xl mx-auto space-y-6 py-12">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-600/10 to-cyan-600/10 border-2 border-blue-600/20">
-              <span className="text-blue-700 text-sm font-semibold">✨ Budgeting made clear with Finora</span>
+          {/* Hero Section - Two Column Layout */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center py-12">
+            {/* Left Column - Content */}
+            <div className="space-y-6">
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-600/10 to-cyan-600/10 border-2 border-blue-600/20">
+                <span className="text-blue-700 text-sm font-semibold">✨ Budgeting made clear with Finora</span>
+              </div>
+              <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
+                <span className="bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-600 bg-clip-text text-transparent">
+                  Take Control
+                </span>
+                <br />
+                <span className="text-gray-900">of Your Finances</span>
+              </h1>
+              <p className="text-lg lg:text-xl text-gray-700 leading-relaxed max-w-xl">
+                Track expenses, set budgets, get alerts, and stay on target—all in one
+                streamlined dashboard. Start free and feel in control from day one.
+              </p>
+              <div className="flex flex-wrap gap-4 pt-4">
+                <Link
+                  to="/signup"
+                  className="group relative bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:from-blue-700 hover:to-cyan-700 px-8 py-4 rounded-xl text-base font-semibold transition-all shadow-lg hover:shadow-2xl hover:scale-105"
+                >
+                  Start Tracking for Free
+                  <span className="ml-2 group-hover:translate-x-1 inline-block transition-transform">→</span>
+                </Link>
+                <Link
+                  to="/login"
+                  className="bg-white text-gray-800 hover:bg-gray-50 px-8 py-4 rounded-xl text-base font-semibold border-2 border-gray-200 shadow-lg hover:shadow-xl transition-all hover:scale-105"
+                >
+                  Log in
+                </Link>
+              </div>
             </div>
-            <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
-              <span className="bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-600 bg-clip-text text-transparent">
-                Take Control
-              </span>
-              <br />
-              <span className="text-gray-900">of Your Finances</span>
-            </h1>
-            <p className="text-lg lg:text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
-              Track expenses, set budgets, get alerts, and stay on target—all in one
-              streamlined dashboard. Start free and feel in control from day one.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center pt-6">
-              <Link
-                to="/signup"
-                className="group relative bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:from-blue-700 hover:to-cyan-700 px-8 py-4 rounded-xl text-base font-semibold transition-all shadow-lg hover:shadow-2xl hover:scale-105"
-              >
-                Start Tracking for Free
-                <span className="ml-2 group-hover:translate-x-1 inline-block transition-transform">→</span>
-              </Link>
-              <Link
-                to="/login"
-                className="bg-white text-gray-800 hover:bg-gray-50 px-8 py-4 rounded-xl text-base font-semibold border-2 border-gray-200 shadow-lg hover:shadow-xl transition-all hover:scale-105"
-              >
-                Log in
-              </Link>
+
+            {/* Right Column - Illustration */}
+            <div className="flex justify-center lg:justify-end">
+              <div className="relative w-full max-w-md">
+                <img
+                  src="/assets/gemini_generated_image_6srngr6srngr6srn.png"
+                  alt="Financial tracking illustration"
+                  className="w-full h-auto drop-shadow-2xl"
+                />
+              </div>
             </div>
           </div>
 
