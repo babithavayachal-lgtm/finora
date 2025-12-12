@@ -252,3 +252,69 @@ export interface GeneratedAlert {
   timestamp: Date;
   alert_setting_id?: string;
 }
+
+export interface PortfolioImage {
+  id: string;
+  title: string;
+  description: string;
+  image_url: string;
+  category_id: string | null;
+  is_featured: boolean;
+  display_order: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Service {
+  id: string;
+  name: string;
+  description: string;
+  price_range: string;
+  inclusions: string[];
+  image_url: string;
+  is_active: boolean;
+  display_order: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  content: string;
+  excerpt: string;
+  featured_image: string;
+  category_id: string | null;
+  status: 'draft' | 'published';
+  published_at: string | null;
+  author_id: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Inquiry {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  service_type: string;
+  preferred_date: string | null;
+  message: string;
+  status: 'new' | 'in_progress' | 'responded' | 'closed';
+  notes: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Testimonial {
+  id: string;
+  client_name: string;
+  client_photo: string;
+  rating: number;
+  testimonial: string;
+  is_featured: boolean;
+  is_approved: boolean;
+  display_order: number;
+  created_at: string;
+}
