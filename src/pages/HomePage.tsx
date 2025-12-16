@@ -119,49 +119,49 @@ export function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900">
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-sm border-b border-slate-800">
+    <div className="min-h-screen bg-black">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm border-b border-orange-500/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-2">
-              <Camera className="w-8 h-8 text-amber-500" />
+              <Camera className="w-8 h-8 text-orange-500" />
               <span className="text-xl font-bold text-white">Alex Rivera Photography</span>
             </div>
 
             <div className="hidden md:flex items-center space-x-8">
               <button
                 onClick={() => scrollToSection('home')}
-                className="text-slate-300 hover:text-white transition-colors"
+                className="text-slate-300 hover:text-orange-500 transition-colors"
               >
                 Home
               </button>
               <button
                 onClick={() => scrollToSection('portfolio')}
-                className="text-slate-300 hover:text-white transition-colors"
+                className="text-slate-300 hover:text-orange-500 transition-colors"
               >
                 Portfolio
               </button>
               <button
                 onClick={() => scrollToSection('about')}
-                className="text-slate-300 hover:text-white transition-colors"
+                className="text-slate-300 hover:text-orange-500 transition-colors"
               >
                 About
               </button>
               <button
                 onClick={() => scrollToSection('services')}
-                className="text-slate-300 hover:text-white transition-colors"
+                className="text-slate-300 hover:text-orange-500 transition-colors"
               >
                 Services
               </button>
               <button
                 onClick={() => scrollToSection('testimonials')}
-                className="text-slate-300 hover:text-white transition-colors"
+                className="text-slate-300 hover:text-orange-500 transition-colors"
               >
                 Testimonials
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="px-6 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors font-medium"
+                className="px-6 py-2 bg-orange-500 text-black rounded-lg hover:bg-orange-400 transition-colors font-bold shadow-lg shadow-orange-500/50"
               >
                 Contact Us
               </button>
@@ -176,37 +176,37 @@ export function HomePage() {
             <div className="md:hidden pb-4 space-y-2">
               <button
                 onClick={() => scrollToSection('home')}
-                className="block w-full text-left px-4 py-2 text-slate-300 hover:bg-slate-800 rounded"
+                className="block w-full text-left px-4 py-2 text-slate-300 hover:bg-slate-800 hover:text-orange-500 rounded"
               >
                 Home
               </button>
               <button
                 onClick={() => scrollToSection('portfolio')}
-                className="block w-full text-left px-4 py-2 text-slate-300 hover:bg-slate-800 rounded"
+                className="block w-full text-left px-4 py-2 text-slate-300 hover:bg-slate-800 hover:text-orange-500 rounded"
               >
                 Portfolio
               </button>
               <button
                 onClick={() => scrollToSection('about')}
-                className="block w-full text-left px-4 py-2 text-slate-300 hover:bg-slate-800 rounded"
+                className="block w-full text-left px-4 py-2 text-slate-300 hover:bg-slate-800 hover:text-orange-500 rounded"
               >
                 About
               </button>
               <button
                 onClick={() => scrollToSection('services')}
-                className="block w-full text-left px-4 py-2 text-slate-300 hover:bg-slate-800 rounded"
+                className="block w-full text-left px-4 py-2 text-slate-300 hover:bg-slate-800 hover:text-orange-500 rounded"
               >
                 Services
               </button>
               <button
                 onClick={() => scrollToSection('testimonials')}
-                className="block w-full text-left px-4 py-2 text-slate-300 hover:bg-slate-800 rounded"
+                className="block w-full text-left px-4 py-2 text-slate-300 hover:bg-slate-800 hover:text-orange-500 rounded"
               >
                 Testimonials
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="block w-full text-left px-4 py-2 bg-amber-500 text-white rounded hover:bg-amber-600"
+                className="block w-full text-left px-4 py-2 bg-orange-500 text-black rounded hover:bg-orange-400 font-bold"
               >
                 Contact Us
               </button>
@@ -224,7 +224,7 @@ export function HomePage() {
             }`}
           >
             <img src={image} alt="Hero" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-slate-900/70" />
+            <div className="absolute inset-0 bg-black/80" />
           </div>
         ))}
 
@@ -238,13 +238,13 @@ export function HomePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={() => scrollToSection('contact')}
-              className="px-8 py-4 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors text-lg font-medium"
+              className="px-8 py-4 bg-orange-500 text-black rounded-lg hover:bg-orange-400 transition-all text-lg font-bold shadow-lg shadow-orange-500/50 hover:shadow-orange-400/60"
             >
               Get in Touch
             </button>
             <button
               onClick={() => scrollToSection('portfolio')}
-              className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg hover:bg-white hover:text-slate-900 transition-colors text-lg font-medium"
+              className="px-8 py-4 bg-transparent border-2 border-green-400 text-green-400 rounded-lg hover:bg-green-400 hover:text-black transition-all text-lg font-bold shadow-lg shadow-green-400/30 hover:shadow-green-400/50"
             >
               View Portfolio
             </button>
@@ -257,14 +257,14 @@ export function HomePage() {
               key={index}
               onClick={() => setHeroImageIndex(index)}
               className={`w-3 h-3 rounded-full transition-all ${
-                index === heroImageIndex ? 'bg-amber-500 w-8' : 'bg-white/50'
+                index === heroImageIndex ? 'bg-orange-500 w-8' : 'bg-white/50'
               }`}
             />
           ))}
         </div>
       </section>
 
-      <section id="portfolio" className="py-20 px-4 bg-slate-800">
+      <section id="portfolio" className="py-20 px-4 bg-slate-900">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-4">Portfolio</h2>
           <p className="text-slate-400 text-center mb-12 max-w-2xl mx-auto">
@@ -274,40 +274,40 @@ export function HomePage() {
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             <button
               onClick={() => setActiveFilter('all')}
-              className={`px-6 py-2 rounded-full transition-colors ${
+              className={`px-6 py-2 rounded-full transition-all ${
                 activeFilter === 'all'
-                  ? 'bg-amber-500 text-white'
-                  : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                  ? 'bg-orange-500 text-black font-bold shadow-lg shadow-orange-500/50'
+                  : 'bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700'
               }`}
             >
               All
             </button>
             <button
               onClick={() => setActiveFilter('wedding')}
-              className={`px-6 py-2 rounded-full transition-colors ${
+              className={`px-6 py-2 rounded-full transition-all ${
                 activeFilter === 'wedding'
-                  ? 'bg-amber-500 text-white'
-                  : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                  ? 'bg-orange-500 text-black font-bold shadow-lg shadow-orange-500/50'
+                  : 'bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700'
               }`}
             >
               Wedding
             </button>
             <button
               onClick={() => setActiveFilter('portrait')}
-              className={`px-6 py-2 rounded-full transition-colors ${
+              className={`px-6 py-2 rounded-full transition-all ${
                 activeFilter === 'portrait'
-                  ? 'bg-amber-500 text-white'
-                  : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                  ? 'bg-orange-500 text-black font-bold shadow-lg shadow-orange-500/50'
+                  : 'bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700'
               }`}
             >
               Portrait
             </button>
             <button
               onClick={() => setActiveFilter('events')}
-              className={`px-6 py-2 rounded-full transition-colors ${
+              className={`px-6 py-2 rounded-full transition-all ${
                 activeFilter === 'events'
-                  ? 'bg-amber-500 text-white'
-                  : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                  ? 'bg-orange-500 text-black font-bold shadow-lg shadow-orange-500/50'
+                  : 'bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700'
               }`}
             >
               Events
@@ -323,7 +323,7 @@ export function HomePage() {
             {filteredImages.map((image) => (
               <div
                 key={image.id}
-                className="group relative overflow-hidden rounded-lg cursor-pointer aspect-square"
+                className="group relative overflow-hidden rounded-lg cursor-pointer aspect-square border-2 border-transparent hover:border-orange-500 transition-all duration-300"
                 onClick={() => setLightboxImage(image)}
               >
                 <img
@@ -331,9 +331,9 @@ export function HomePage() {
                   alt={image.title}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                   <div>
-                    <h3 className="text-white font-semibold text-lg">{image.title}</h3>
+                    <h3 className="text-white font-bold text-lg">{image.title}</h3>
                     {image.description && (
                       <p className="text-slate-300 text-sm mt-1">{image.description}</p>
                     )}
@@ -351,7 +351,7 @@ export function HomePage() {
           onClick={() => setLightboxImage(null)}
         >
           <button
-            className="absolute top-4 right-4 text-white hover:text-amber-500 transition-colors"
+            className="absolute top-4 right-4 text-white hover:text-orange-500 transition-colors"
             onClick={() => setLightboxImage(null)}
           >
             <X className="w-8 h-8" />
@@ -359,19 +359,19 @@ export function HomePage() {
           <img
             src={lightboxImage.image_url}
             alt={lightboxImage.title}
-            className="max-w-full max-h-full object-contain"
+            className="max-w-full max-h-full object-contain border-2 border-orange-500/30"
             onClick={(e) => e.stopPropagation()}
           />
         </div>
       )}
 
-      <section id="about" className="py-20 px-4 bg-slate-900">
+      <section id="about" className="py-20 px-4 bg-black border-t border-orange-500/20">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">About Me</h2>
               <p className="text-slate-400 mb-6 leading-relaxed">
-                With over 10 years of experience in professional photography, I specialize in capturing
+                With over 7 years of experience in professional photography, I specialize in capturing
                 the essence of life's most precious moments. My passion lies in telling stories through
                 images, whether it's the joy of a wedding day, the intimacy of a portrait session, or the
                 energy of a special event.
@@ -381,33 +381,26 @@ export function HomePage() {
                 of light and composition. My goal is to create timeless images that you'll treasure for
                 years to come.
               </p>
-              <div className="grid grid-cols-3 gap-6">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-amber-500 mb-2">10+</div>
-                  <div className="text-slate-400 text-sm">Years Experience</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-amber-500 mb-2">500+</div>
-                  <div className="text-slate-400 text-sm">Projects Done</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-amber-500 mb-2">450+</div>
-                  <div className="text-slate-400 text-sm">Happy Clients</div>
+              <div className="flex justify-center md:justify-start">
+                <div className="text-center bg-slate-900 px-8 py-6 rounded-lg border-2 border-orange-500/50 shadow-lg shadow-orange-500/20">
+                  <div className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-400 mb-2">7+</div>
+                  <div className="text-slate-300 text-base font-semibold">Years Experience</div>
                 </div>
               </div>
             </div>
             <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-green-400/20 rounded-lg blur-xl"></div>
               <img
                 src="https://images.pexels.com/photos/1264210/pexels-photo-1264210.jpeg?auto=compress&cs=tinysrgb&w=800"
                 alt="Photographer"
-                className="rounded-lg shadow-2xl"
+                className="rounded-lg shadow-2xl relative border-2 border-orange-500/30"
               />
             </div>
           </div>
         </div>
       </section>
 
-      <section id="services" className="py-20 px-4 bg-slate-800">
+      <section id="services" className="py-20 px-4 bg-slate-900 border-t border-orange-500/20">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-4">Services</h2>
           <p className="text-slate-400 text-center mb-12 max-w-2xl mx-auto">
@@ -418,22 +411,22 @@ export function HomePage() {
             {services.map((service) => (
               <div
                 key={service.id}
-                className="bg-slate-900 rounded-lg p-6 hover:transform hover:scale-105 transition-all duration-300"
+                className="bg-black border border-orange-500/30 rounded-lg p-6 hover:transform hover:scale-105 hover:border-orange-500 transition-all duration-300 shadow-lg hover:shadow-orange-500/20"
               >
                 <h3 className="text-xl font-bold text-white mb-3">{service.name}</h3>
                 <p className="text-slate-400 mb-4 text-sm">{service.description}</p>
-                <div className="text-2xl font-bold text-amber-500 mb-4">{service.price_range}</div>
+                <div className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-400 mb-4">{service.price_range}</div>
                 <ul className="space-y-2 mb-6">
                   {service.inclusions.map((item, index) => (
                     <li key={index} className="text-slate-400 text-sm flex items-start">
-                      <Check className="w-4 h-4 text-amber-500 mr-2 flex-shrink-0 mt-0.5" />
+                      <Check className="w-4 h-4 text-green-400 mr-2 flex-shrink-0 mt-0.5" />
                       <span>{item}</span>
                     </li>
                   ))}
                 </ul>
                 <button
                   onClick={() => scrollToSection('contact')}
-                  className="w-full px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors"
+                  className="w-full px-4 py-2 bg-orange-500 text-black rounded-lg hover:bg-orange-400 transition-all font-bold shadow-lg shadow-orange-500/30 hover:shadow-orange-400/50"
                 >
                   Get Quote
                 </button>
@@ -443,7 +436,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section id="testimonials" className="py-20 px-4 bg-slate-900">
+      <section id="testimonials" className="py-20 px-4 bg-black border-t border-orange-500/20">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-12">
             What Clients Say
@@ -451,17 +444,17 @@ export function HomePage() {
 
           {testimonials.length > 0 && (
             <div className="relative">
-              <div className="bg-slate-800 rounded-lg p-8 md:p-12">
+              <div className="bg-slate-900 border border-orange-500/30 rounded-lg p-8 md:p-12 shadow-lg shadow-orange-500/10">
                 <div className="flex items-center mb-6">
                   {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-amber-500 fill-amber-500" />
+                    <Star key={i} className="w-5 h-5 text-orange-500 fill-orange-500" />
                   ))}
                 </div>
                 <p className="text-slate-300 text-lg mb-6 leading-relaxed">
                   "{testimonials[currentTestimonial].testimonial}"
                 </p>
                 <div className="flex items-center">
-                  <div className="w-12 h-12 rounded-full bg-amber-500 flex items-center justify-center text-white font-bold mr-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-green-400 flex items-center justify-center text-black font-bold mr-4">
                     {testimonials[currentTestimonial].client_name.charAt(0)}
                   </div>
                   <div>
@@ -478,7 +471,7 @@ export function HomePage() {
                     key={index}
                     onClick={() => setCurrentTestimonial(index)}
                     className={`w-3 h-3 rounded-full transition-all ${
-                      index === currentTestimonial ? 'bg-amber-500 w-8' : 'bg-slate-700'
+                      index === currentTestimonial ? 'bg-orange-500 w-8' : 'bg-slate-700'
                     }`}
                   />
                 ))}
@@ -488,7 +481,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section id="contact" className="py-20 px-4 bg-slate-800">
+      <section id="contact" className="py-20 px-4 bg-slate-900 border-t border-orange-500/20">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-4">Get in Touch</h2>
           <p className="text-slate-400 text-center mb-12 max-w-2xl mx-auto">
@@ -500,40 +493,40 @@ export function HomePage() {
             <div>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label className="block text-slate-300 mb-2">Name</label>
+                  <label className="block text-slate-300 mb-2 font-semibold">Name</label>
                   <input
                     type="text"
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:border-amber-500 focus:outline-none"
+                    className="w-full px-4 py-3 bg-black border border-orange-500/30 rounded-lg text-white focus:border-orange-500 focus:outline-none transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-300 mb-2">Email</label>
+                  <label className="block text-slate-300 mb-2 font-semibold">Email</label>
                   <input
                     type="email"
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:border-amber-500 focus:outline-none"
+                    className="w-full px-4 py-3 bg-black border border-orange-500/30 rounded-lg text-white focus:border-orange-500 focus:outline-none transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-300 mb-2">Phone</label>
+                  <label className="block text-slate-300 mb-2 font-semibold">Phone</label>
                   <input
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:border-amber-500 focus:outline-none"
+                    className="w-full px-4 py-3 bg-black border border-orange-500/30 rounded-lg text-white focus:border-orange-500 focus:outline-none transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-300 mb-2">Service Type</label>
+                  <label className="block text-slate-300 mb-2 font-semibold">Service Type</label>
                   <select
                     value={formData.service_type}
                     onChange={(e) => setFormData({ ...formData, service_type: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:border-amber-500 focus:outline-none"
+                    className="w-full px-4 py-3 bg-black border border-orange-500/30 rounded-lg text-white focus:border-orange-500 focus:outline-none transition-colors"
                   >
                     <option value="">Select a service</option>
                     {services.map((service) => (
@@ -544,36 +537,36 @@ export function HomePage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-slate-300 mb-2">Preferred Date</label>
+                  <label className="block text-slate-300 mb-2 font-semibold">Preferred Date</label>
                   <input
                     type="date"
                     value={formData.preferred_date}
                     onChange={(e) => setFormData({ ...formData, preferred_date: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:border-amber-500 focus:outline-none"
+                    className="w-full px-4 py-3 bg-black border border-orange-500/30 rounded-lg text-white focus:border-orange-500 focus:outline-none transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-300 mb-2">Message</label>
+                  <label className="block text-slate-300 mb-2 font-semibold">Message</label>
                   <textarea
                     rows={4}
                     required
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:border-amber-500 focus:outline-none resize-none"
+                    className="w-full px-4 py-3 bg-black border border-orange-500/30 rounded-lg text-white focus:border-orange-500 focus:outline-none resize-none transition-colors"
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={submitStatus === 'submitting'}
-                  className="w-full px-6 py-3 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors font-medium disabled:opacity-50"
+                  className="w-full px-6 py-3 bg-orange-500 text-black rounded-lg hover:bg-orange-400 transition-all font-bold shadow-lg shadow-orange-500/30 hover:shadow-orange-400/50 disabled:opacity-50"
                 >
                   {submitStatus === 'submitting' ? 'Sending...' : 'Send Inquiry'}
                 </button>
                 {submitStatus === 'success' && (
-                  <div className="text-green-500 text-center">Message sent successfully!</div>
+                  <div className="text-green-400 text-center font-semibold">Message sent successfully!</div>
                 )}
                 {submitStatus === 'error' && (
-                  <div className="text-red-500 text-center">
+                  <div className="text-red-500 text-center font-semibold">
                     Failed to send message. Please try again.
                   </div>
                 )}
@@ -585,27 +578,27 @@ export function HomePage() {
                 <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
                 <div className="space-y-4">
                   <div className="flex items-start">
-                    <Mail className="w-6 h-6 text-amber-500 mr-4 flex-shrink-0" />
+                    <Mail className="w-6 h-6 text-orange-500 mr-4 flex-shrink-0" />
                     <div>
-                      <div className="text-slate-300">Email</div>
-                      <a href="mailto:alex@riveraphoto.com" className="text-white hover:text-amber-500">
+                      <div className="text-slate-400">Email</div>
+                      <a href="mailto:alex@riveraphoto.com" className="text-white hover:text-orange-500 transition-colors">
                         alex@riveraphoto.com
                       </a>
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <Phone className="w-6 h-6 text-amber-500 mr-4 flex-shrink-0" />
+                    <Phone className="w-6 h-6 text-orange-500 mr-4 flex-shrink-0" />
                     <div>
-                      <div className="text-slate-300">Phone</div>
-                      <a href="tel:+919876543210" className="text-white hover:text-amber-500">
+                      <div className="text-slate-400">Phone</div>
+                      <a href="tel:+919876543210" className="text-white hover:text-orange-500 transition-colors">
                         +91 98765-43210
                       </a>
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <MapPin className="w-6 h-6 text-amber-500 mr-4 flex-shrink-0" />
+                    <MapPin className="w-6 h-6 text-orange-500 mr-4 flex-shrink-0" />
                     <div>
-                      <div className="text-slate-300">Location</div>
+                      <div className="text-slate-400">Location</div>
                       <div className="text-white">Pune, Maharashtra, India</div>
                     </div>
                   </div>
@@ -614,7 +607,7 @@ export function HomePage() {
 
               <div>
                 <h3 className="text-2xl font-bold text-white mb-6">Business Hours</h3>
-                <div className="space-y-2 text-slate-300">
+                <div className="space-y-2 text-slate-400">
                   <div className="flex justify-between">
                     <span>Monday - Friday</span>
                     <span className="text-white">9:00 AM - 6:00 PM</span>
@@ -637,7 +630,7 @@ export function HomePage() {
                     href="https://instagram.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 bg-slate-900 rounded-lg flex items-center justify-center hover:bg-amber-500 transition-colors"
+                    className="w-12 h-12 bg-black border border-orange-500/30 rounded-lg flex items-center justify-center hover:bg-orange-500 hover:border-orange-500 transition-all"
                   >
                     <Instagram className="w-6 h-6 text-white" />
                   </a>
@@ -645,7 +638,7 @@ export function HomePage() {
                     href="https://facebook.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 bg-slate-900 rounded-lg flex items-center justify-center hover:bg-amber-500 transition-colors"
+                    className="w-12 h-12 bg-black border border-orange-500/30 rounded-lg flex items-center justify-center hover:bg-orange-500 hover:border-orange-500 transition-all"
                   >
                     <Facebook className="w-6 h-6 text-white" />
                   </a>
@@ -656,7 +649,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <footer className="bg-slate-900 border-t border-slate-800 py-8 px-4">
+      <footer className="bg-black border-t border-orange-500/20 py-8 px-4">
         <div className="max-w-7xl mx-auto text-center text-slate-400">
           <p>&copy; 2024 Alex Rivera Photography. All rights reserved.</p>
         </div>
