@@ -16,6 +16,9 @@ import {
 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
+import { PortfolioImageModal } from '../components/PortfolioImageModal';
+import { ServiceModal } from '../components/ServiceModal';
+import { TestimonialModal } from '../components/TestimonialModal';
 import type { PortfolioImage, Service, BlogPost, Inquiry, Testimonial } from '../lib/types';
 
 type Tab = 'overview' | 'portfolio' | 'services' | 'blog' | 'inquiries' | 'testimonials';
@@ -30,8 +33,14 @@ export function AdminDashboard() {
   const [inquiries, setInquiries] = useState<Inquiry[]>([]);
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
   const [loading, setLoading] = useState(true);
-  const [showModal, setShowModal] = useState(false);
-  const [editingItem, setEditingItem] = useState<any>(null);
+
+  const [showPortfolioModal, setShowPortfolioModal] = useState(false);
+  const [showServiceModal, setShowServiceModal] = useState(false);
+  const [showTestimonialModal, setShowTestimonialModal] = useState(false);
+
+  const [editingPortfolioImage, setEditingPortfolioImage] = useState<PortfolioImage | null>(null);
+  const [editingService, setEditingService] = useState<Service | null>(null);
+  const [editingTestimonial, setEditingTestimonial] = useState<Testimonial | null>(null);
 
   useEffect(() => {
     if (!user) {
@@ -89,6 +98,45 @@ export function AdminDashboard() {
   const updateInquiryStatus = async (id: string, status: string) => {
     await supabase.from('inquiries').update({ status }).eq('id', id);
     loadData();
+  };
+
+  const openAddPortfolioModal = () => {
+    setEditingPortfolioImage(null);
+    setShowPortfolioModal(true);
+  };
+
+  const openEditPortfolioModal = (image: PortfolioImage) => {
+    setEditingPortfolioImage(image);
+    setShowPortfolioModal(true);
+  };
+
+  const openAddServiceModal = () => {
+    setEditingService(null);
+    setShowServiceModal(true);
+  };
+
+  const openEditServiceModal = (service: Service) => {
+    setEditingService(service);
+    setShowServiceModal(true);
+  };
+
+  const openAddTestimonialModal = () => {
+    setEditingTestimonial(null);
+    setShowTestimonialModal(true);
+  };
+
+  const openEditTestimonialModal = (testimonial: Testimonial) => {
+    setEditingTestimonial(testimonial);
+    setShowTestimonialModal(true);
+  };
+
+  const handleModalClose = () => {
+    setShowPortfolioModal(false);
+    setShowServiceModal(false);
+    setShowTestimonialModal(false);
+    setEditingPortfolioImage(null);
+    setEditingService(null);
+    setEditingTestimonial(null);
   };
 
   if (loading) {
@@ -267,7 +315,10 @@ export function AdminDashboard() {
             <div>
               <div className="flex items-center justify-between mb-8">
                 <h2 className="text-3xl font-bold text-white">Portfolio Management</h2>
-                <button className="px-6 py-3 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors flex items-center space-x-2">
+                <button
+                  onClick={openAddPortfolioModal}
+                  className="px-6 py-3 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors flex items-center space-x-2"
+                >
                   <Plus className="w-5 h-5" />
                   <span>Add Image</span>
                 </button>
@@ -285,7 +336,10 @@ export function AdminDashboard() {
                       <h3 className="text-white font-semibold mb-1">{image.title}</h3>
                       <p className="text-slate-400 text-sm mb-4 line-clamp-2">{image.description}</p>
                       <div className="flex items-center space-x-2">
-                        <button className="flex-1 px-3 py-2 bg-slate-700 text-white rounded hover:bg-slate-600 transition-colors flex items-center justify-center space-x-1">
+                        <button
+                          onClick={() => openEditPortfolioModal(image)}
+                          className="flex-1 px-3 py-2 bg-slate-700 text-white rounded hover:bg-slate-600 transition-colors flex items-center justify-center space-x-1"
+                        >
                           <Edit2 className="w-4 h-4" />
                           <span>Edit</span>
                         </button>
@@ -314,7 +368,10 @@ export function AdminDashboard() {
             <div>
               <div className="flex items-center justify-between mb-8">
                 <h2 className="text-3xl font-bold text-white">Services Management</h2>
-                <button className="px-6 py-3 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors flex items-center space-x-2">
+                <button
+                  onClick={openAddServiceModal}
+                  className="px-6 py-3 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors flex items-center space-x-2"
+                >
                   <Plus className="w-5 h-5" />
                   <span>Add Service</span>
                 </button>
@@ -329,7 +386,10 @@ export function AdminDashboard() {
                         <div className="text-2xl font-bold text-amber-500">{service.price_range}</div>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <button className="p-2 bg-slate-700 text-white rounded hover:bg-slate-600 transition-colors">
+                        <button
+                          onClick={() => openEditServiceModal(service)}
+                          className="p-2 bg-slate-700 text-white rounded hover:bg-slate-600 transition-colors"
+                        >
                           <Edit2 className="w-4 h-4" />
                         </button>
                         <button
@@ -444,7 +504,10 @@ export function AdminDashboard() {
             <div>
               <div className="flex items-center justify-between mb-8">
                 <h2 className="text-3xl font-bold text-white">Testimonials Management</h2>
-                <button className="px-6 py-3 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors flex items-center space-x-2">
+                <button
+                  onClick={openAddTestimonialModal}
+                  className="px-6 py-3 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors flex items-center space-x-2"
+                >
                   <Plus className="w-5 h-5" />
                   <span>Add Testimonial</span>
                 </button>
@@ -468,7 +531,10 @@ export function AdminDashboard() {
                         </div>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <button className="p-2 bg-slate-700 text-white rounded hover:bg-slate-600 transition-colors">
+                        <button
+                          onClick={() => openEditTestimonialModal(testimonial)}
+                          className="p-2 bg-slate-700 text-white rounded hover:bg-slate-600 transition-colors"
+                        >
                           <Edit2 className="w-4 h-4" />
                         </button>
                         <button
@@ -509,6 +575,27 @@ export function AdminDashboard() {
           )}
         </div>
       </main>
+
+      <PortfolioImageModal
+        isOpen={showPortfolioModal}
+        onClose={handleModalClose}
+        onSave={loadData}
+        editingImage={editingPortfolioImage}
+      />
+
+      <ServiceModal
+        isOpen={showServiceModal}
+        onClose={handleModalClose}
+        onSave={loadData}
+        editingService={editingService}
+      />
+
+      <TestimonialModal
+        isOpen={showTestimonialModal}
+        onClose={handleModalClose}
+        onSave={loadData}
+        editingTestimonial={editingTestimonial}
+      />
     </div>
   );
 }
