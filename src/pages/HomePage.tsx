@@ -391,7 +391,7 @@ export function HomePage() {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-green-400/20 rounded-lg blur-xl"></div>
               <img
-                src="https://images.pexels.com/photos/1264210/pexels-photo-1264210.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src="/assets/img_0119.jpg"
                 alt="Photographer"
                 className="rounded-lg shadow-2xl relative border-2 border-orange-500/30"
               />
